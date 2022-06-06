@@ -1,0 +1,11 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100vw;
+  padding: 60px;
+}
+.home h2.error {
+  font-size: 16px;
+  color: #f44336;
+}

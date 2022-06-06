@@ -1,0 +1,69 @@
+.add-transaction {
+  display: flex;
+  flex-direction: column;
+}
+.add-transaction h2 {
+  color: black;
+  margin-bottom: 24px;
+  font-size: 28px;
+}
+.add-transaction button {
+  border: none;
+  outline: none;
+  background: none;
+  background: rgba(44, 64, 71, 1);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  cursor: pointer;
+  width: 150px;
+  font-size: 18px;
+}
+.add-transaction button:active {
+  transform: translateY(1px);
+}
+.add-transaction .form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+.add-transaction .fields {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  flex: 1;
+  gap: 20px;
+}
+.add-transaction .fields .field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.add-transaction .fields .field.half-flex {
+  flex: 0.5;
+}
+.add-transaction .fields .field label {
+  color: black;
+  margin-bottom: 7px;
+  margin-left: 5px;
+  font-size: 16px;
+}
+.add-transaction .fields .field input {
+  height: 60px;
+  width: 100%;
+  background: #fffdfd;
+  border: 1px solid #bbbbbb;
+  font-size: 18px;
+  padding: 0 15px;
+}
+.add-transaction .isProcessing {
+  margin-bottom: 10px;
+}
+.add-transaction .error {
+  margin-bottom: 10px;
+  color: red;
+}

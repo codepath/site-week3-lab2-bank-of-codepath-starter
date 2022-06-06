@@ -1,0 +1,66 @@
+.bank-activity {
+  display: flex;
+  flex-direction: column;
+}
+.bank-activity h2 {
+  color: black;
+  margin-bottom: 24px;
+  font-size: 28px;
+  margin-top: 40px;
+}
+.bank-activity .table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid rgba(196, 196, 196, 0.3);
+}
+
+.bank-activity .table .table-row {
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  width: 100%;
+  border-bottom: 1px solid rgba(196, 196, 196, 0.3);
+  background: white;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.bank-activity .table .table-row:hover {
+  background: #f3fffb;
+}
+.bank-activity .table .table-row.table-header .col {
+  background: rgba(44, 64, 71, 1);
+  color: white;
+}
+.bank-activity .table .table-row .col .arrow {
+  margin-right: 10px;
+  min-width: 20px;
+}
+.bank-activity .table .table-row .col .arrow.flip {
+  transform: rotate(180deg);
+}
+
+.bank-activity .table .table-row .col {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80px;
+  padding: 25px;
+  color: rgba(44, 65, 71, 1);
+  font-weight: 600;
+}
+.bank-activity .table .table-row .col.x1 {
+  flex: 1;
+}
+.bank-activity .table .table-row .col.x15 {
+  flex: 1.5;
+}
+.bank-activity .table .table-row .col.x2 {
+  flex: 2;
+}
+.bank-activity .table .table-row .col.x3 {
+  flex: 3;
+}
+.bank-activity .table .table-row .col.x4 {
+  flex: 4;
+}
