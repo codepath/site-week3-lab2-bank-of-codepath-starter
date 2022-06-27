@@ -94,7 +94,7 @@ Start by installing the core dependencies for this project.
   - Every time a file is updated, the tests will be re-run.
 
 
-### Step 2: The `App.jsx` component
+### Step 1: The `App.jsx` component
 
   - [ ] Route Components
     - [ ] Import the `BrowserRouter`, `Routes`, and `Route` components from `react-router-dom`
@@ -114,7 +114,7 @@ Start by installing the core dependencies for this project.
       - [ ] `error` - any errors associated with fetching data from the API
       - [ ] `filterInputValue` - a string value used to create a controlled input in the `FilterInput.jsx` component
 
-### Step 3: The `Navbar.jsx` and `FilterInput.jsx` components
+### Step 2: The `Navbar.jsx` and `FilterInput.jsx` components
 
 #### Inside the `Navbar.jsx` component:
     
@@ -143,7 +143,7 @@ Start by installing the core dependencies for this project.
     - [ ] Pass the appropriate props to the `input` element to create a controlled input.
     - [ ] Typing into the input should now update state. Use the React devtools to confirm this
 
-### Step 4: The `Home.jsx` component
+### Step 3: The `Home.jsx` component
 
 #### In the `App.jsx` component
   - [ ] Pass props
@@ -181,7 +181,7 @@ Start by installing the core dependencies for this project.
       - [ ] Otherwise, it should just be the raw array passed as the `transactions` prop.
     - [ ] The `filteredTransactions` array should be passed to the `BankActivity` component as its `transactions` prop.
 
-### Step 5: The `AddTransaction.jsx` component
+### Step 4: The `AddTransaction.jsx` component
 
 This component is responsible for adding a new transaction to the Bank. We'll be turning each input into a _controlled input_ and adding an `onClick` handler to the submit button to make that happen.
 
@@ -231,7 +231,7 @@ This component is responsible for adding a new transaction to the Bank. We'll be
         - [ ] Finally, it should reset the `newTransactionForm` to its original state and set `isCreating` back to `false`
   - [ ] The `AddTransaction` component should now let users submit new transactions to the backend that are stored in the database. Try running the app against the live API to see it in action.
 
-### Step 6: The `BankActivity` component
+### Step 5: The `BankActivity` component
 
 #### Iteration in JSX
 
@@ -245,7 +245,7 @@ This component is responsible for adding a new transaction to the Bank. We'll be
   - [ ] Make sure to dynamically create the `to` prop based on the `id` of each transaction
   - [ ] Clicking on the `TransactionRow` component should redirect to the `TransactionDetail` page for that transaction
 
-### Step 7: The `TransactionDetail` component
+### Step 6: The `TransactionDetail` component
 
   - [ ] Define state variables
     - [ ] Inside the `TransactionDetail.jsx` component, create some state variables and state updater functions:
