@@ -8,13 +8,17 @@ import TransactionDetail from '../TransactionDetail/TransactionDetail';
 import './App.css';
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [transactions, setTransactions] = useState([]);
   const [transfers, setTransfers] = useState([]);
   const [error, setError] = useState(null);
   const [filterInputValue, setFilterInputValue] = useState('');
-
-  
+  const [newTransactionForm, setNewTransactionForm] = useState({
+    category: '',
+    d: '',
+    amount: 0,
+  });
+  const [isCreating, setIsCreating] = useState(false);
 
   return (
     <div className="app">
@@ -25,13 +29,31 @@ export default function App() {
         />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  transactions={transactions}
+                  setTransactions={setTransactions}
+                  transfers={transfers}
+                  setTransfers={setTransfers}
+                  error={error}
+                  setError={setError}
+                  isLoading={isLoading}
+                  setIsLoading={setIsLoading}
+                  filterInputValue={filterInputValue}
+                  isCreating={isCreating}
+                  setIsCreating={setIsCreating}
+                  newTransactionForm={newTransactionForm}
+                  setNewTransactionForm={setNewTransactionForm}
+                />
+              }
+            />
             <Route
               path="/transaction/:transactionId"
               element={<TransactionDetail />}
             />
           </Routes>
-          <Home />
         </main>
       </BrowserRouter>
     </div>
