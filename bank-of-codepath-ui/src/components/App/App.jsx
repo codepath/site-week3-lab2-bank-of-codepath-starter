@@ -15,7 +15,7 @@ export default function App() {
   const [filterInputValue, setFilterInputValue] = useState('');
   const [newTransactionForm, setNewTransactionForm] = useState({
     category: '',
-    d: '',
+    description: '',
     amount: 0,
   });
   const [isCreating, setIsCreating] = useState(false);

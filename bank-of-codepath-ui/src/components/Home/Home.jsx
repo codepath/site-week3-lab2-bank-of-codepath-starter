@@ -24,6 +24,7 @@ export default function Home({
 }) {
   useEffect(async () => {
     setIsLoading(true);
+    
     const fetchTransactions = async () => {
       try {
         const response = await axios.get(

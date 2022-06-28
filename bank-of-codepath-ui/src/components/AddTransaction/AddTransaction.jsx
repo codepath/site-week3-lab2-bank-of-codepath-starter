@@ -5,19 +5,19 @@ export default function AddTransaction(props) {
   const handleOnFormFieldChange = (change) => {
     console.log(change);
     if (change.target.name === 'category') {
-      props.form({
-        ...props.newTransactionForm,
+      props.setForm({
+        ...props.form,
         category: change.target.value,
       });
     } else if (change.target.name === 'description') {
-      props.form({
-        ...props.newTransactionForm,
+      props.setForm({
+        ...props.form,
         description: change.target.value,
       });
     } else {
-      props.form({
-        ...props.newTransactionForm,
-        amount: change.target.value,
+      props.setForm({
+        ...props.form,
+        amount: parseInt(change.target.value),
       });
     }
   };
@@ -37,8 +37,11 @@ export default function AddTransaction(props) {
   );
 }
 
-export function AddTransactionForm({ handleOnFormFieldChange, form, ...props }) {
-  console.log('props.form', form)
+export function AddTransactionForm({
+  handleOnFormFieldChange,
+  form,
+  ...props
+}) {
   return (
     <div className="form">
       <div className="fields">
@@ -46,7 +49,7 @@ export function AddTransactionForm({ handleOnFormFieldChange, form, ...props }) 
           <label>Description</label>
           <input
             name="description"
-            value={props.form.description}
+            value={form.description}
             onChange={handleOnFormFieldChange}
           />
         </div>
@@ -54,7 +57,7 @@ export function AddTransactionForm({ handleOnFormFieldChange, form, ...props }) 
           <label>Category</label>
           <input
             name="category"
-            value={props.form.category}
+            value={form.category}
             onChange={handleOnFormFieldChange}
           />
         </div>
@@ -62,7 +65,7 @@ export function AddTransactionForm({ handleOnFormFieldChange, form, ...props }) 
           <label>Amount (cents)</label>
           <input
             name="amount"
-            value={props.form.amount}
+            value={form.amount}
             type="number"
             onChange={handleOnFormFieldChange}
           />
