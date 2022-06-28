@@ -12,16 +12,24 @@ export default function App() {
   const [transactions, setTransactions] = useState([]);
   const [transfers, setTransfers] = useState([]);
   const [error, setError] = useState(null);
-  const [filterInputValue, setFilterValue] = useState("");
+  const [filterInputValue, setFilterInputValue] = useState('');
+
+  
 
   return (
-    <div className="App">
+    <div className="app">
       <BrowserRouter>
-        <Navbar />
+        <Navbar
+          filterInputValue={filterInputValue}
+          setFilterInputValue={setFilterInputValue}
+        />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/transaction/:transactionId" element={<TransactionDetail />} />
+            <Route
+              path="/transaction/:transactionId"
+              element={<TransactionDetail />}
+            />
           </Routes>
           <Home />
         </main>
