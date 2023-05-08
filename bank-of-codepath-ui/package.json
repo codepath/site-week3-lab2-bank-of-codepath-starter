@@ -37,6 +37,6 @@
     "workerDirectory": ".public"
   },
   "engines": {
-    "node": "18.x"
+    "node": ">=18.16.0"
   }
 }
