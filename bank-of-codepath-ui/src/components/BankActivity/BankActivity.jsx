@@ -1,8 +1,49 @@
-import * as React from "react"
+import * as React from "react";
+import  {useEffect}  from "react";
 import { formatDate, formatAmount } from "../../utils/format"
 import "./BankActivity.css"
+import { fetchTransactions, fetchTransfer } from "../../api";
+import {Link} from "react-router-dom"
 
-export default function BankActivity() {
+
+export default function BankActivity(props) {
+ 
+ 
+ const{transactionsFromServer, setTotalBalance, setTransactionsFromServer, enableFilteredList, filteredListState, transferFromServer, setTransferFromServer, filteredTransferListState } =props
+
+  useEffect(()=>{
+
+ const fetchTransactionData= async() =>{
+  try{
+    const data = await fetchTransactions();
+    setTransactionsFromServer(data.transactions)
+  }
+  catch(error){
+    console.error('Error fetching transaction data:', error);
+  }
+ } 
+ fetchTransactionData();
+
+ const fetchTransferData= async() =>{
+  try{
+    const data = await fetchTransfer();
+    setTransferFromServer(data.transfers)
+  }
+  catch(error){
+    console.error('Error fetching transfer data:', error);
+  }
+ } 
+ fetchTransferData();
+ },[])
+
+
+ if(transactionsFromServer.length>0 && transferFromServer.length>0){
+  const balanceTransaction =transactionsFromServer.reduce((total,item)=>
+    total+=parseFloat(item.amount*0.01),0)
+  const balanceTransfer= transferFromServer.reduce((total,item)=>total=+parseFloat(item.amount*0.01),0)
+  props.setTotalBalance(balanceTransaction + balanceTransfer)
+  }
+
   return (
     <div className="bank-activity">
       <h2>Transactions</h2>
@@ -13,9 +54,29 @@ export default function BankActivity() {
           <span className="col x2">Amount</span>
           <span className="col x15">Date</span>
         </div>
-        {/* */}
+        {!enableFilteredList ? transactionsFromServer.length>0 && transactionsFromServer.map((data)=>
+        <div className="table-row" key={data.id}>
+          <span className="col x4">
+            <Link to={`/transaction/${data.id}`}>
+            {data.description}
+            </Link>
+          </span>
+          <span className="col x2">{data.category}</span>
+          <span className="col x2">{formatAmount(data.amount)}</span>
+          <span className="col x15">{data.postedAt}</span> 
+        </div>) :
+        filteredListState.length>0 && filteredListState.map((data)=>
+        <div className="table-row" key={data.id}>
+           <span className="col x4">
+            <Link to={`/transaction/${data.id}`}>
+            {data.description}
+            </Link>
+          </span>
+          <span className="col x2">{data.category}</span>
+          <span className="col x2">{formatAmount(data.amount)}</span>
+          <span className="col x15">{data.postedAt}</span>
+        </div>)}
       </div>
-
       <h2>Transfers</h2>
       <div className="table">
         <div className="table-header table-row">
@@ -24,7 +85,29 @@ export default function BankActivity() {
           <span className="col x2">Amount</span>
           <span className="col x15">Date</span>
         </div>
-        {/* */}
+        {!enableFilteredList ? transferFromServer.length>0 && transferFromServer.map((data)=>
+        <div className="table-row" key={data.id}>
+          <span className="col x4">
+          <Link to={`/transfer/${data.id}`}>
+            {data.memo}
+            </Link>
+            </span>
+          <span className="col x2">{data.recipientEmail}</span>
+          <span className="col x2">{formatAmount(data.amount)}</span>
+          <span className="col x15">{data.postedAt}</span>
+        </div>) :
+         filteredTransferListState.length>0 && filteredTransferListState.map((data)=>
+         <div className="table-row" key={data.id}>
+          <span className="col x4">
+          <Link to={`/transfer/${data.id}`}>
+            {data.memo}
+            </Link>
+            </span>
+          <span className="col x2">{data.recipientEmail}</span>
+          <span className="col x2">{formatAmount(data.amount)}</span>
+          <span className="col x15">{data.postedAt}</span>
+       </div>)}
+       
       </div>
     </div>
   )

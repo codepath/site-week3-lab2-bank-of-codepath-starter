@@ -1,25 +1,24 @@
 import * as React from "react"
-import "./AddTransaction.css"
+import "./AddTransfers.css"
 import { API_BASE_URL } from "../../constants"
 import { formatDate } from "../../utils/format"
 import { v4 as uuidv4 } from 'uuid';
-import {createTransactions} from "../../api"
+import {createTransfers} from "../../api"
 import { useRef } from "react";
 
-export default function AddTransaction(props) {
+export default function AddTransfer(props) {
   return (
-    <div className="add-transaction">
-      <h2>Add Transaction</h2>
+    <div className="add-transfer">
+      <h2>Add Transfer</h2>
 
-      <AddTransactionForm transactionsFromServer={props.transactionsFromServer}  setTransactionsFromServer={props.setTransactionsFromServer}/>
+      <AddTransferForm transferFromServer={props.transferFromServer}  setTransferFromServer={props.setTransferFromServer}/>
     </div>
   )
 }
 
-export function AddTransactionForm(props) {
-  
-  const formRef = useRef(null)
-  
+export function AddTransferForm(props) {
+  const formRef = useRef(null);
+
   const submitHandle=(e)=>{
     e.preventDefault();
     let formObject = {
@@ -31,34 +30,35 @@ export function AddTransactionForm(props) {
       formObject[key] = value;
     }
    
-    createTransactions(formObject).then(data=>{
-      console.log(data.transaction)
-      if(props.transactionsFromServer){
-        props.setTransactionsFromServer(prevState=>[...prevState, data.transaction])
+    createTransfers(formObject).then(data=>{
+      console.log("data.transfer : ",data.transfer)
+      if(props.transferFromServer){
+        props.setTransferFromServer(prevState=>[...prevState, data.transfer])
       }
     }
     
     );
     formRef.current.reset();
-  }
 
+   
+  }
   return (
     <div className="form">
       <form className="fields" ref={formRef} onSubmit={submitHandle}>
         <div className="field">
-          <label htmlFor="description">Description</label>
-          <input id="description" name="description" type="text" />
+          <label htmlFor="memo">Memo</label>
+          <input id="memo" name="memo" type="text" />
         </div>
         <div className="field">
-          <label htmlFor="category">Category</label>
-          <input  id="category" name="category" type="text"/>
+          <label htmlFor="recipientEmail">Recipient</label>
+          <input  id="recipientEmail" name="recipientEmail" type="text"/>
         </div>
         <div className="field half-flex">
           <label htmlFor="amount">Amount (cents)</label>
           <input  id="amount" name="amount" type="text"/>
         </div>
 
-        <button className="btn add-transaction" type="submit" >
+        <button className="btn add-transfer" type="submit" >
           Add
         </button>
       </form>

@@ -4,13 +4,16 @@ import codepath from "../../assets/codepath.svg"
 import avatar from "../../assets/avatar.png"
 import "./Navbar.css"
 
-export default function Navbar() {
+export default function Navbar(props) {
   return (
     <nav className="navbar">
       <a className="logo">Logo</a>
 
       <div className="search">
-        <FilterInput />
+        <FilterInput handleSearch={props.handleSearch}/>
+      </div>
+      <div className="balance">
+        Total Balance : {props.totalBalance.toFixed(2)}   
       </div>
 
       <div className="user">

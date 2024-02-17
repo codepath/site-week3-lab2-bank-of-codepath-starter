@@ -6,6 +6,13 @@
       "recipientEmail": "landlord@gmail.com",
       "memo": "rent payment",
       "amount": -99999.99
+    },
+    {
+      "id": "0f5f264b-1c3f-417f-a8db-fd01183b2590",
+      "postedAt": "2024-02-16T06:17:56.449Z",
+      "memo": "FinalTest",
+      "recipientEmail": "test",
+      "amount": "-10000000"
     }
   ],
   "transactions": [
@@ -14,7 +21,8 @@
       "postedAt": "2021-02-28T01:00:00.475Z",
       "description": "Programming Shirt that says 'There's no place like 127.0.0.1'",
       "category": "Fashion",
-      "amount": -20000
+      "amount": -20000,
+      "paidOffFlag": true
     },
     {
       "id": 2,
@@ -43,6 +51,13 @@
       "amount": "100",
       "description": "Something cool",
       "category": "Income"
+    },
+    {
+      "id": "4f7f8a5b-718a-46e2-b3ad-60cbfb4ccdf0",
+      "postedAt": "2024-02-16T06:10:46.874Z",
+      "description": "FinalTest",
+      "category": "test",
+      "amount": "2"
     }
   ]
 }

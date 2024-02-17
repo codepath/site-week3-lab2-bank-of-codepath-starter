@@ -16,6 +16,12 @@
 .navbar .search {
   flex: 1;
 }
+.navbar .balance {
+  min-width: 200px;
+  width: 100%;
+  max-width: 270px;
+}
+
 .navbar .user {
   min-width: 300px;
   display: flex;
